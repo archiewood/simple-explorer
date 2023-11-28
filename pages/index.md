@@ -8,9 +8,11 @@ This demo [connects](/settings) to a local DuckDB file `needful_things.duckdb`.
 
 <LineChart
   data={orders_by_month}
+  x=order_mo
   y=sales
   yFmt=usd0k
   title = "Sales by Month, USD"
+  sort = false
 />
 
 ## Write in Markdown
@@ -22,13 +24,14 @@ Evidence renders markdown files into web pages. This page is:
 
 ```sql orders_by_month
 select
-  date_trunc('month', order_datetime) as order_month,
+  substr(order_datetime,0,8) as order_mo,
   count(*) as number_of_orders,
   sum(sales) as sales,
   sum(sales)/count(*) as average_order_value
 from orders
 where order_datetime >= '2020-01-01'
-group by 1 order by 1 desc
+group by 1 
+order by 1
 ```
 
 In your markdown file, you can include SQL queries in code fences. Evidence will run these queries through your database and return the results to the page.
@@ -54,9 +57,8 @@ Last month customers placed **<Value data={orders_by_month} column=number_of_ord
   data={orders_by_month} 
   y=number_of_orders 
   fillColor="#488f96"
->
-  <ReferenceArea xMin="2020-03-15" xMax="2021-05-15" label="COVID Impacted" color=red/>
-</BarChart>
+  sort=false
+/>
 
 > **Try:** Change the chart to a `<LineChart>`.
 
