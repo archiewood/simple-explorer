@@ -2,7 +2,7 @@
 title: Welcome to Evidence
 ---
 
-I'm an advanced developer and know how to cusomize stuff!
+How does Evidence Work? I don't care!
 
 This demo [connects](/settings) to a local DuckDB file `needful_things.duckdb`.
 

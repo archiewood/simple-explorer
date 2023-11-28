@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        ".npmrc": true,
+        "package-lock.json": true,
+        "package.json": true,
+        "node_modules": true,
+        ".evidence": true,
+        ".gitignore": true,
+        "evidence.plugins.yaml": true,
+        ".vscode": true
+    }
+}
